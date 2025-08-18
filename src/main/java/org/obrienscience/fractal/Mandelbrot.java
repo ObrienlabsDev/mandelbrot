@@ -18,7 +18,7 @@ public class Mandelbrot extends AnimApplet2 {
     // There is only the need for one of the following statics
     private static final long serialVersionUID = 6502859074457924892L;
     /** Get number of (hyperthreaded + real) cores.  IE: p630 with HT=2, Core2 E8400=2 and Core i7-920 = 8 */
-    public static final int CORES = 32;//Runtime.getRuntime().availableProcessors() << 8;
+    public static final int CORES = 64;//Runtime.getRuntime().availableProcessors() << 8;
     public static List<Color> rgbColors;
     public static List<Color> currentColors;
     private long frame = 1;
