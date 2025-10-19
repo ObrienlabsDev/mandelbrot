@@ -1,42 +1,47 @@
 package org.obrienscience.fractal;
 
+import java.math.BigDecimal;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
-/**
- * Use Swing for desktop apps
- */
-public class MandelbrotStream extends JFrame {
+public class MandelbrotStream {
 	
-	private static final long serialVersionUID = 1L;
-
-	public MandelbrotStream () {
-		try {
-            JFrame frame = new JFrame("Mandelbrot");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(640, 480);
-
-            JPanel panel = new JPanel(); // Create a panel
-            //JLabel label = new JLabel("Hello, Swing!"); // Create a label
-			BufferedImage image = ImageIO.read(new File("/Users/michaelobrien/wse_github/ObrienlabsDev/mandelbrot/corei7_920_zoom_time_1_to_512_threads_graph2.JPG"));
-			JLabel label = new JLabel(new ImageIcon(image));
-            panel.add(label); 
-            frame.add(panel); 
-            frame.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
+	public void compute() {
+		// example mandelbrot set
+		BigDecimal startX = new BigDecimal(-2.0);
+		BigDecimal endX = new BigDecimal(2.0);
+		BigDecimal startY = new BigDecimal(-1.5);
+		BigDecimal endY = new BigDecimal(1.5);
+		Long currentX = 0L;
+		Long currentY = 0L;
+		Long pixelsX = 1024L;
+		Long pixelsY = 1024L;
+		BigDecimal currentZ = new BigDecimal(0);
+		BigDecimal maxOrbit = new BigDecimal(2.0);
+		Long maxCount = 0L;
+		
+		BigDecimal addX = endX.subtract(startX).divide(new BigDecimal(pixelsX));
+		BigDecimal addY = endY.subtract(startY).divide(new BigDecimal(pixelsY));
+		for(long y=0; y < pixelsY; y++) {
+			
+			for(long x=0;x < pixelsX; x++) {
+				long count=0;
+				
+				while(count < 16384 || currentZ.compareTo(maxOrbit) < 0) {
+					count++;
+					
+				}
+				if(count > maxCount) {
+					maxCount = count;
+					System.out.println(maxCount);
+				}
+			}
 		}
+		
 	}
 
 	public static void main(String[] args) {
-		MandelbrotStream mandel = new MandelbrotStream();	
+		MandelbrotStream mandel = new MandelbrotStream();
+		mandel.compute();
 
 	}
+
 }

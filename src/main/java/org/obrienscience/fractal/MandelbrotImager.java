@@ -41,8 +41,8 @@ public class MandelbrotImager {
 
 	// maximum = 16384 = 256 mpixel
 	private int colorPowerMult = 2;
-    private int extentX = 16384;//512 << 0;//3;
-    private int extentY = 16384;//512 << 0;//3;	
+    private int extentX = 2048;//16384;//512 << 0;//3;
+    private int extentY = 2048;//16384;//512 << 0;//3;	
     private double realPerPixelX;
     private double realPerPixelY;
     private double gridXStart = -2;
